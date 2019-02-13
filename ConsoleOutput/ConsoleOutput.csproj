@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Algorithms\Algorithms.csproj" />
+    <ProjectReference Include="..\CommonStuff\CommonStuff.csproj" />
+  </ItemGroup>
+
 </Project>
