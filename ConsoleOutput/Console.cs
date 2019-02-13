@@ -21,6 +21,7 @@ namespace ConsoleOutput
           
             Run(Algorithm.QuickSort, (int[])array.Clone());
             Run(Algorithm.BubbleSort, (int[])array.Clone());
+            Run(Algorithm.InsertionSort, (int[])array.Clone(), true);
             //Run(Algorithm.MergeSort, (int[])array.Clone());
 
             Console.ReadKey();
@@ -58,6 +59,9 @@ namespace ConsoleOutput
                     break;
                 case Algorithm.BubbleSort:
                     BubbleSort.Sort(array);
+                    break;
+                case Algorithm.InsertionSort:
+                    InsertionSort.Sort(array);
                     break;
                 case Algorithm.MergeSort:
                     MergeSort.Sort(array.ToList());
