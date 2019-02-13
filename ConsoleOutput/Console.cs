@@ -2,6 +2,7 @@
 using Algorithms;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace ConsoleOutput
 {
@@ -18,13 +19,14 @@ namespace ConsoleOutput
 
             Console.WriteLine(string.Join(' ', array));
           
-            SortRun(Algorithm.QuickSort, (int[])array.Clone());
-            SortRun(Algorithm.BubbleSort, (int[])array.Clone());
+            Run(Algorithm.QuickSort, (int[])array.Clone());
+            Run(Algorithm.BubbleSort, (int[])array.Clone());
+            //Run(Algorithm.MergeSort, (int[])array.Clone());
 
             Console.ReadKey();
         }
 
-        private static void SortRun(Algorithm algorithm, int[] array, bool displaySortedArray = false)
+        private static void Run(Algorithm algorithm, int[] array, bool displaySortedArray = false)
         {
             Console.WriteLine("######################");
             Console.WriteLine($"##### {algorithm} #####");
@@ -32,19 +34,7 @@ namespace ConsoleOutput
 
             var w = new Stopwatch();
             w.Start();
-
-            // Sort
-            switch (algorithm)
-            {
-                case Algorithm.QuickSort:
-                    QuickSort.Sort(array, 0, array.Length - 1);
-                    break;
-                case Algorithm.BubbleSort:
-                    BubbleSort.Sort(array);
-                    break;
-                default:
-                    throw new NotSupportedException();
-            }
+            Sort(algorithm, array);
 
             w.Stop();
 
@@ -56,6 +46,25 @@ namespace ConsoleOutput
             }
 
             Console.WriteLine($"Sorted {array.Length} items in {w.ElapsedMilliseconds} ms / {w.ElapsedTicks} ticks with {algorithm}");
+        }
+
+        private static void Sort(Algorithm algorithm, int[] array)
+        {
+            // Sort
+            switch (algorithm)
+            {
+                case Algorithm.QuickSort:
+                    QuickSort.Sort(array, 0, array.Length - 1);
+                    break;
+                case Algorithm.BubbleSort:
+                    BubbleSort.Sort(array);
+                    break;
+                case Algorithm.MergeSort:
+                    MergeSort.Sort(array.ToList());
+                    break;
+                default:
+                    throw new NotSupportedException();
+            }
         }
     }
 }

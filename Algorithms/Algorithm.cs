@@ -7,6 +7,7 @@ namespace Algorithms
     public enum Algorithm
     {
         QuickSort,
-        BubbleSort
+        BubbleSort,
+        MergeSort
     }
 }

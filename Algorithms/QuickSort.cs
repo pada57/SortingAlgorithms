@@ -6,27 +6,27 @@ namespace Algorithms
 {
     public static class QuickSort
     {
-        public static void Sort(int[] array, int firstIndex, int lastIndex)
+        public static void Sort(int[] array, int startIndex, int endIndex)
         {
-            if (firstIndex < lastIndex)
+            if (startIndex < endIndex)
             {
-                var pivot = ChoosePivot(array, firstIndex, lastIndex);
-                pivot = Partition(array, firstIndex, lastIndex, pivot);
-                Sort(array, firstIndex, pivot - 1);
-                Sort(array, pivot + 1, lastIndex);
+                var pivot = ChoosePivot(array, startIndex, endIndex);
+                pivot = Partition(array, startIndex, endIndex, pivot);
+                Sort(array, startIndex, pivot - 1);
+                Sort(array, pivot + 1, endIndex);
             }
         }
 
-        static int Partition(int[] array, int firstIndex, int lastIndex, int pivot)
+        static int Partition(int[] array, int startIndex, int endIndex, int pivot)
         {
             //swap pivot with last element
             var valuePivot = array[pivot];
-            array[pivot] = array[lastIndex];
-            array[lastIndex] = valuePivot;
+            array[pivot] = array[endIndex];
+            array[endIndex] = valuePivot;
 
             // move all elements less than pivot value before
-            var j = firstIndex;
-            for (int i = firstIndex; i < lastIndex; i++)
+            var j = startIndex;
+            for (int i = startIndex; i < endIndex; i++)
             {
                 if (array[i] <= valuePivot)
                 {
@@ -45,9 +45,9 @@ namespace Algorithms
             return j;
         }
 
-        static int ChoosePivot(int[] array, int firstIndex, int lastIndex)
+        static int ChoosePivot(int[] array, int startIndex, int endIndex)
         {
-            return (lastIndex - firstIndex) / 2;
+            return (endIndex - startIndex) / 2;
         }
         
         
