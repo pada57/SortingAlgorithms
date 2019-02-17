@@ -22,6 +22,7 @@ namespace ConsoleOutput
             Run(Algorithm.QuickSort, (int[])array.Clone());
             Run(Algorithm.BubbleSort, (int[])array.Clone());
             Run(Algorithm.InsertionSort, (int[])array.Clone());
+            Run(Algorithm.SelectionSort, (int[])array.Clone());
             //Run(Algorithm.MergeSort, (int[])array.Clone());
 
             Console.ReadKey();
@@ -65,6 +66,9 @@ namespace ConsoleOutput
                     break;
                 case Algorithm.MergeSort:
                     MergeSort.Sort(array.ToList());
+                    break;
+                case Algorithm.SelectionSort:
+                    SelectionSort.Sort(array);
                     break;
                 default:
                     throw new NotSupportedException();

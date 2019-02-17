@@ -9,6 +9,7 @@ namespace Algorithms
         QuickSort,
         BubbleSort,
         MergeSort,
-        InsertionSort
+        InsertionSort,
+        SelectionSort
     }
 }
