@@ -13,10 +13,10 @@ namespace ConsoleOutput
             Console.WriteLine("###############################");
             Console.WriteLine($"##### Sorting algorithms #####");
             Console.WriteLine("###############################");
-
-            Console.WriteLine("Array to sort : ");
+                        
             var array = Generator.NewRandomArray(10000);
 
+            Console.WriteLine("Array to sort : ");
             Console.WriteLine(string.Join(' ', array));
           
             Run(Algorithm.QuickSort, (int[])array.Clone());
