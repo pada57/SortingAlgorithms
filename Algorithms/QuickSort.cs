@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonStuff;
+using System;
 using System.Diagnostics;
 using System.Linq;
 
@@ -6,50 +7,44 @@ namespace Algorithms
 {
     public static class QuickSort
     {
-        public static void Sort(int[] array, int startIndex, int endIndex)
+        public static void Sort(int[] array, int left, int right)
         {
-            if (startIndex < endIndex)
+            if (left < right && left>= 0 && right >= 0)
             {
-                var pivot = ChoosePivot(array, startIndex, endIndex);
-                pivot = Partition(array, startIndex, endIndex, pivot);
-                Sort(array, startIndex, pivot - 1);
-                Sort(array, pivot + 1, endIndex);
+                int pivot = Partition(array, left, right);
+
+                if (pivot != -1)
+                {
+                    Sort(array, left, pivot - 1);
+                    Sort(array, pivot + 1, right);
+                }
             }
         }
 
-        static int Partition(int[] array, int startIndex, int endIndex, int pivot)
+        static int Partition(int[] array, int left, int right)
         {
-            //swap pivot with last element
-            var valuePivot = array[pivot];
-            array[pivot] = array[endIndex];
-            array[endIndex] = valuePivot;
+            if (left > right) return -1;
 
+            //swap pivot with last element
+            int valuePivot = array[right];    // choose last one to pivot, easy to code
+            
             // move all elements less than pivot value before
-            var j = startIndex;
-            for (int i = startIndex; i < endIndex; i++)
+            var end = left;
+            for (int i = left; i < right; i++)
             {
-                if (array[i] <= valuePivot)
+                if (array[i] < valuePivot)
                 {
                     // swap values greater with smaller than pivot
-                    var greaterValueThanPivot = array[j];
-                    array[j] = array[i];
-                    array[i] = greaterValueThanPivot;
-                    j++;
+                    array.Swap(end, i);
+                    end++;
                 }
             }
 
             // swap first element greater than pivot 
-            array[pivot] = array[j];
-            array[j] = valuePivot;
+            array.Swap(end, right);
 
-            return j;
-        }
-
-        static int ChoosePivot(int[] array, int startIndex, int endIndex)
-        {
-            return (endIndex - startIndex) / 2;
-        }
-        
+            return end;           
+        }       
         
     }
 }
