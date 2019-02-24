@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonStuff;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -36,18 +37,31 @@ namespace Algorithms
     fin fonction
 */
 
-        public static void Sort(int[] tree)
+        public static void Sort(int[] array)
         {
-            for (int i = tree.Length / 2; i > 0; i--)
+            int n = array.Length;
+            for (int i = n / 2 - 1; i >= 0; i--)
+                Heapify(array, n, i);
+            for (int i = n - 1; i >= 0; i--)
             {
-                Sieve(tree, i, tree.Length);
+                array.Swap(0, i);
+                Heapify(array, i, 0);
             }
-            
         }
-
-        private static void Sieve(int[] tree, int i, int length)
+        static void Heapify(int[] array, int n, int i)
         {
-            throw new NotImplementedException();
+            int largest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            if (left < n && array[left] > array[largest])
+                largest = left;
+            if (right < n && array[right] > array[largest])
+                largest = right;
+            if (largest != i)
+            {
+                array.Swap(i, largest);
+                Heapify(array, n, largest);
+            }
         }
     }
 }

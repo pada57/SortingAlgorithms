@@ -5,11 +5,12 @@ using System.Text;
 namespace Algorithms
 {
     public enum Algorithm
-    {
-        QuickSort,
-        BubbleSort,
-        MergeSort,
+    {        
+        BubbleSort,  
+        HeapSort,
         InsertionSort,
+        MergeSort,
+        QuickSort,
         SelectionSort,
         ShellSort
     }

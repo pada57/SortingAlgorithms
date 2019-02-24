@@ -16,15 +16,16 @@ namespace ConsoleOutput
                         
             var array = Generator.NewRandomArray(10000);
 
-            Console.WriteLine("Array to sort : ");
-            Console.WriteLine(string.Join(' ', array));
+            Console.WriteLine($"Array to sort : {array.Length} Items");
+            //Console.WriteLine(string.Join(' ', array));
           
             Run(Algorithm.QuickSort, (int[])array.Clone());
             Run(Algorithm.BubbleSort, (int[])array.Clone());
             Run(Algorithm.InsertionSort, (int[])array.Clone());
             Run(Algorithm.SelectionSort, (int[])array.Clone());
             Run(Algorithm.ShellSort, (int[])array.Clone());
-            Run(Algorithm.MergeSort, (int[])array.Clone(), true);
+            Run(Algorithm.MergeSort, (int[])array.Clone());
+            Run(Algorithm.HeapSort, (int[])array.Clone());
 
             Console.ReadKey();
         }
@@ -48,7 +49,7 @@ namespace ConsoleOutput
                 Console.WriteLine(string.Join(' ', array));
             }
 
-            Console.WriteLine($"Sorted {array.Length} items in {w.ElapsedMilliseconds} ms / {w.ElapsedTicks} ticks with {algorithm}");
+            Console.WriteLine($"--------> {w.ElapsedMilliseconds} ms / {w.ElapsedTicks} ticks");
         }
 
         private static void Sort(Algorithm algorithm, int[] array)
@@ -73,6 +74,9 @@ namespace ConsoleOutput
                     break;
                 case Algorithm.ShellSort:
                     ShellSort.Sort(array);
+                    break;
+                case Algorithm.HeapSort:
+                    HeapSort.Sort(array);
                     break;
                 default:
                     throw new NotSupportedException();
