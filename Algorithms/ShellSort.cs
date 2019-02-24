@@ -17,16 +17,18 @@ namespace Algorithms
                 h = h * 3 + 1; // 1, 4, 13, 40, 121...
             }
 
-            while (h >= 1)
+            int j;
+            for (int gap = h; gap > 0; gap /= 3)
             {
-                for (int i = h; i < n; i++)
+                for (int i = gap; i < array.Length; i++)
                 {
-                    for (int j = 0; j >= h && array[j] < array[j - h]; j -= h)
+                    var tmp = array[i];
+                    for (j = i; j >= gap && tmp.CompareTo(array[j - gap]) < 0; j -= gap)
                     {
-                        array.Swap(j, j - h);
+                        array[j] = array[j - gap];
                     }
+                    array[j] = tmp;
                 }
-                h /= 3;
             }
         }
     }

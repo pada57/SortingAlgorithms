@@ -23,7 +23,7 @@ namespace ConsoleOutput
             Run(Algorithm.BubbleSort, (int[])array.Clone());
             Run(Algorithm.InsertionSort, (int[])array.Clone());
             Run(Algorithm.SelectionSort, (int[])array.Clone());
-            Run(Algorithm.ShellSort, (int[])array.Clone(), true);
+            Run(Algorithm.ShellSort, (int[])array.Clone());
             //Run(Algorithm.MergeSort, (int[])array.Clone());
 
             Console.ReadKey();
