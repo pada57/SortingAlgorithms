@@ -26,6 +26,7 @@ namespace ConsoleOutput
             Run(Algorithm.ShellSort, (int[])array.Clone());
             Run(Algorithm.MergeSort, (int[])array.Clone());
             Run(Algorithm.HeapSort, (int[])array.Clone());
+            Run(Algorithm.CombSort, (int[])array.Clone());
 
             Console.ReadKey();
         }
@@ -77,6 +78,9 @@ namespace ConsoleOutput
                     break;
                 case Algorithm.HeapSort:
                     HeapSort.Sort(array);
+                    break;
+                case Algorithm.CombSort:
+                    CombSort.Sort(array);
                     break;
                 default:
                     throw new NotSupportedException();

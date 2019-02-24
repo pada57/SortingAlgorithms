@@ -6,12 +6,14 @@ namespace Algorithms
 {
     public enum Algorithm
     {        
-        BubbleSort,  
+        BubbleSort,
+        CombSort,
         HeapSort,
         InsertionSort,
         MergeSort,
         QuickSort,
         SelectionSort,
-        ShellSort
+        ShellSort,
+        SmoothSort,
     }
 }
