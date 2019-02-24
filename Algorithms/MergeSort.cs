@@ -27,39 +27,71 @@ namespace Algorithms
                         renvoyer B[1] :: fusion(A, B[2, …, b])
               */
 
-        public static List<int> Sort(List<int> list)
+        public static void Sort(int[] input, int low, int high)
         {
-            if (list.Count < 2)
+            if (low < high)
             {
-                return list;
+                int middle = (low / 2) + (high / 2);
+                Sort(input, low, middle);
+                Sort(input, middle + 1, high);
+                Merge(input, low, middle, high);
             }
-
-            return Merge(Sort(list.GetRange(0, list.Count - list.Count / 2)), Sort(list.GetRange(list.Count / 2, list.Count - list.Count / 2)));
         }
 
-        private static List<int> Merge(List<int> list1, List<int> list2)
+        public static void Sort(int[] input)
+        {
+            Sort(input, 0, input.Length - 1);
+        }
+
+        private static void Merge(int[] input, int low, int middle, int high)
         {
 
-            if (list1.Count == 0)
+            int left = low;
+            int right = middle + 1;
+            int[] tmp = new int[(high - low) + 1];
+            int tmpIndex = 0;
+
+            while ((left <= middle) && (right <= high))
             {
-                return list2;
-            }
-            if (list2.Count == 0)
-            {
-                return list1;
-            }
-            List<int> result = new List<int>();
-            if (list1[0] > list2[0])
-            {
-                result.Add(list2[0]);
-                result.AddRange(Merge(list1, list2.GetRange(1, list2.Count - 1)));
-                return result;
+                if (input[left] < input[right])
+                {
+                    tmp[tmpIndex] = input[left];
+                    left = left + 1;
+                }
+                else
+                {
+                    tmp[tmpIndex] = input[right];
+                    right = right + 1;
+                }
+                tmpIndex = tmpIndex + 1;
             }
 
-            result.Add(list1[0]);
-            result.AddRange(Merge(list1.GetRange(1, list1.Count - 1), list2));
+            if (left <= middle)
+            {
+                while (left <= middle)
+                {
+                    tmp[tmpIndex] = input[left];
+                    left = left + 1;
+                    tmpIndex = tmpIndex + 1;
+                }
+            }
 
-            return result;
+            if (right <= high)
+            {
+                while (right <= high)
+                {
+                    tmp[tmpIndex] = input[right];
+                    right = right + 1;
+                    tmpIndex = tmpIndex + 1;
+                }
+            }
+
+            for (int i = 0; i < tmp.Length; i++)
+            {
+                input[low + i] = tmp[i];
+            }
+
         }
+
     }
 }

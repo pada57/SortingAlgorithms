@@ -24,7 +24,7 @@ namespace ConsoleOutput
             Run(Algorithm.InsertionSort, (int[])array.Clone());
             Run(Algorithm.SelectionSort, (int[])array.Clone());
             Run(Algorithm.ShellSort, (int[])array.Clone());
-            //Run(Algorithm.MergeSort, (int[])array.Clone());
+            Run(Algorithm.MergeSort, (int[])array.Clone(), true);
 
             Console.ReadKey();
         }
@@ -66,7 +66,7 @@ namespace ConsoleOutput
                     InsertionSort.Sort(array);
                     break;
                 case Algorithm.MergeSort:
-                    MergeSort.Sort(array.ToList());
+                    MergeSort.Sort(array);
                     break;
                 case Algorithm.SelectionSort:
                     SelectionSort.Sort(array);
