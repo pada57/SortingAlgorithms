@@ -10,6 +10,7 @@ namespace Algorithms
         BubbleSort,
         MergeSort,
         InsertionSort,
-        SelectionSort
+        SelectionSort,
+        ShellSort
     }
 }
