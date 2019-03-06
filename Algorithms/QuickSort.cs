@@ -29,21 +29,21 @@ namespace Algorithms
             int valuePivot = array[right];    // choose last one to pivot, easy to code
             
             // move all elements less than pivot value before
-            var end = left;
+            var newPivot = left;
             for (int i = left; i < right; i++)
             {
                 if (array[i] < valuePivot)
                 {
                     // swap values greater with smaller than pivot
-                    array.Swap(end, i);
-                    end++;
+                    array.Swap(newPivot, i);
+                    newPivot++;
                 }
             }
 
             // swap first element greater than pivot 
-            array.Swap(end, right);
+            array.Swap(newPivot, right);
 
-            return end;           
+            return newPivot;           
         }       
         
     }

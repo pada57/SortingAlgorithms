@@ -12,6 +12,7 @@ namespace Algorithms
         InsertionSort,
         MergeSort,
         QuickSort,
+        QuickSortV2,
         SelectionSort,
         ShellSort,
         SmoothSort,

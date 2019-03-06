@@ -20,6 +20,7 @@ namespace ConsoleOutput
             //Console.WriteLine(string.Join(' ', array));
           
             Run(Algorithm.QuickSort, (int[])array.Clone());
+            Run(Algorithm.QuickSortV2, (int[])array.Clone());
             Run(Algorithm.BubbleSort, (int[])array.Clone());
             Run(Algorithm.InsertionSort, (int[])array.Clone());
             Run(Algorithm.SelectionSort, (int[])array.Clone());
@@ -60,6 +61,9 @@ namespace ConsoleOutput
             {
                 case Algorithm.QuickSort:
                     QuickSort.Sort(array, 0, array.Length - 1);
+                    break;
+                case Algorithm.QuickSortV2:
+                    QuickSortV2.Sort(array, 0, array.Length - 1);
                     break;
                 case Algorithm.BubbleSort:
                     BubbleSort.Sort(array);
